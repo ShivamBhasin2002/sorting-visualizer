@@ -1,0 +1,14 @@
+.visualizer {
+	display: flex;
+	width: 90vw;
+	margin: 0 auto;
+	height: 91vh;
+	overflow: hidden;
+	align-items: flex-end;
+	justify-content: center;
+	.bar {
+		margin-left: 1px;
+		background-color: teal;
+		min-width: 2px;
+	}
+}
