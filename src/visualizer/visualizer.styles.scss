@@ -10,6 +10,8 @@
 		margin-left: 1px;
 		background-color: rgb(88, 166, 255);
 		min-width: 2px;
+		transition: all;
+		transition-duration: 0.1s;
 	}
 	.compare {
 		background-color: #9b59b6 !important;

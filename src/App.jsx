@@ -54,36 +54,19 @@ const App = () => {
 		// 		);
 		// 	}
 		// });
-		animation.map(({ classname, pos }, c) =>
+		animation.map(({ classname, pos, firstCall }, c) =>
 			setTimeout(() => {
-				setTimeout(
-					() =>
-						pos.map((i) => {
-							document.querySelector(`#bar${i}`).classList.toggle(classname);
-							if (classname !== 'sorted')
-								setTimeout(
-									() =>
-										document
-											.querySelector(`#bar${i}`)
-											.classList.toggle(classname),
-									c * 0.1
-								);
-						}),
-					c * 5
-				);
-				if (classname === 'swap') {
-					setTimeout(
-						() =>
-							([
-								document.querySelector(`#bar${pos[0]}`).style.height,
-								document.querySelector(`#bar${pos[1]}`).style.height,
-							] = [
-								document.querySelector(`#bar${pos[1]}`).style.height,
-								document.querySelector(`#bar${pos[0]}`).style.height,
-							]),
-						c * 5.55
-					);
-				}
+				pos.map((i) => {
+					document.querySelector(`#bar${i}`).classList.toggle(classname);
+				});
+				if (classname === 'swap' && firstCall)
+					[
+						document.querySelector(`#bar${pos[0]}`).style.height,
+						document.querySelector(`#bar${pos[1]}`).style.height,
+					] = [
+						document.querySelector(`#bar${pos[1]}`).style.height,
+						document.querySelector(`#bar${pos[0]}`).style.height,
+					];
 			}, c * 10)
 		);
 	};
