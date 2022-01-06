@@ -8,6 +8,7 @@ const Visualizer = ({ arr }) => {
 				return (
 					<div
 						key={idx}
+						id={`bar${idx}`}
 						className='bar'
 						style={{
 							height: `${i}px`,

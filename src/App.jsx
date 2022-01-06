@@ -3,20 +3,20 @@ import React, { useState, useEffect } from 'react';
 import Visualizer from './visualizer/visualizer.component';
 
 import { newArray } from './utilityFunctions/helpperFunctions';
-import { selectionSort } from './utilityFunctions/sortingAlgorithms';
+import sorting from './utilityFunctions/sortingAlgorithms';
 
 import './App.scss';
 
 const App = () => {
 	const [size, setSize] = useState(100);
 	const [array, setArray] = useState(newArray(size));
-	const [sortMethod, setSortMethod] = useState('selectionSort');
+	const [sortMethod, setSortMethod] = useState('selectSort');
 	//testing sorting algorithms using useEffect
-	// useEffect(async (tests = 1000) => {
+	// useEffect(async (tests = 100) => {
 	// 	for (let i = 0; i < tests; i++) {
 	// 		let flag = true;
 	// 		let array = newArray(Math.floor(Math.random() * 700));
-	// 		let testArray = selectionSort(array);
+	// 		let testArray = sorting.selectSort(array);
 	// 		array.sort((x, y) => x - y);
 	// 		if (array.size !== testArray.size) flag = false;
 	// 		for (let i = 0; i < array.size && flag; i++)
@@ -24,12 +24,75 @@ const App = () => {
 	// 		console.log(flag);
 	// 	}
 	// });
+
+	const sortAnimation = (arr, sort) => {
+		let animation = sort(arr);
+		// animation.map(({ classname, pos }, c) => {
+		// 	setTimeout(
+		// 		() =>
+		// 			pos.map((i) => {
+		// 				document.querySelector(`#bar${i}`).classList.toggle(classname);
+		// 				setTimeout(
+		// 					() =>
+		// 						document.querySelector(`#bar${i}`).classList.toggle(classname),
+		// 					c * 2
+		// 				);
+		// 			}),
+		// 		c * 3
+		// 	);
+		// 	if (classname === 'swap') {
+		// 		setTimeout(
+		// 			() =>
+		// 				([
+		// 					document.querySelector(`#bar${pos[0]}`).style.height,
+		// 					document.querySelector(`#bar${pos[1]}`).style.height,
+		// 				] = [
+		// 					document.querySelector(`#bar${pos[1]}`).style.height,
+		// 					document.querySelector(`#bar${pos[0]}`).style.height,
+		// 				]),
+		// 			c * 3
+		// 		);
+		// 	}
+		// });
+		animation.map(({ classname, pos }, c) =>
+			setTimeout(() => {
+				setTimeout(
+					() =>
+						pos.map((i) => {
+							document.querySelector(`#bar${i}`).classList.toggle(classname);
+							if (classname !== 'sorted')
+								setTimeout(
+									() =>
+										document
+											.querySelector(`#bar${i}`)
+											.classList.toggle(classname),
+									c * 0.1
+								);
+						}),
+					c * 5
+				);
+				if (classname === 'swap') {
+					setTimeout(
+						() =>
+							([
+								document.querySelector(`#bar${pos[0]}`).style.height,
+								document.querySelector(`#bar${pos[1]}`).style.height,
+							] = [
+								document.querySelector(`#bar${pos[1]}`).style.height,
+								document.querySelector(`#bar${pos[0]}`).style.height,
+							]),
+						c * 5.55
+					);
+				}
+			}, c * 10)
+		);
+	};
 	return (
 		<div>
-			<nav className='navbar navbar-light bg-light'>
+			<nav className='navbar'>
 				<div className='navbar-container'>
 					<button
-						className='btn btn-lg btn-danger'
+						className='btn btn-lg btn-dark'
 						onClick={() => setArray(newArray(size))}
 					>
 						Genrate Array
@@ -65,7 +128,12 @@ const App = () => {
 						/>
 					</span>
 
-					<button className='btn btn-lg btn-success'>Sort</button>
+					<button
+						className='btn btn-lg btn-dark'
+						onClick={() => sortAnimation(array, sorting[sortMethod])}
+					>
+						Sort
+					</button>
 				</div>
 			</nav>
 			<Visualizer arr={array} />

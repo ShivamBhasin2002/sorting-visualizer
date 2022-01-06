@@ -4,4 +4,4 @@ const generateArray = (size) => {
 		arr[i] = Math.floor(Math.random() * (600 - 10) + 10);
 	return arr;
 };
-module.exports.newArray = generateArray;
+export const newArray = generateArray;

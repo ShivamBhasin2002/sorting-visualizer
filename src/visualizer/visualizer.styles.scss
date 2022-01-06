@@ -1,14 +1,23 @@
 .visualizer {
 	display: flex;
-	width: 90vw;
+	width: 95vw;
 	margin: 0 auto;
 	height: 91vh;
-	overflow: hidden;
+	// overflow: hidden;
 	align-items: flex-end;
 	justify-content: center;
 	.bar {
 		margin-left: 1px;
-		background-color: teal;
+		background-color: rgb(88, 166, 255);
 		min-width: 2px;
+	}
+	.compare {
+		background-color: #9b59b6 !important;
+	}
+	.swap {
+		background-color: red !important;
+	}
+	.sorted {
+		background-color: #2aa198 !important;
 	}
 }
