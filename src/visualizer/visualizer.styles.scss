@@ -7,19 +7,23 @@
 	align-items: flex-end;
 	justify-content: center;
 	.bar {
-		margin-left: 1px;
+		margin: 0 0.7px;
 		background-color: rgb(88, 166, 255);
 		min-width: 2px;
-		transition: all;
-		transition-duration: 0.1s;
 	}
 	.compare {
-		background-color: #9b59b6 !important;
+		background-color: #7d3ea0 !important;
 	}
 	.swap {
-		background-color: red !important;
+		background-color: #e74c3c !important;
 	}
 	.sorted {
-		background-color: #2aa198 !important;
+		background-color: #2479d0 !important;
+	}
+	.correct {
+		background-color: #27ae60 !important;
+	}
+	.pivot {
+		background-color: #c9cccd !important;
 	}
 }
